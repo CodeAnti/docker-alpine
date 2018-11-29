@@ -40,19 +40,19 @@ if [ ! -z "$PUID" ]; then
   if [ -z "$PGID" ]; then
     PGID=${PUID}
   fi
-  deluser www-data
-  addgroup -g ${PGID} www-data
-  adduser -D -S -h /var/cache/www-data -s /sbin/nologin -G www-data -u ${PUID} www-data
+  deluser www
+  addgroup -g ${PGID} www
+  adduser -D -S -h /var/cache/www -s /sbin/nologin -G www -u ${PUID} www
 else
   # Always chown webroot for better mounting
-  chown -Rf www-data.www-data /data/www
+  chown -Rf www.www /data/www
 fi
 
 mkdir -p /etc/default
 env >> /etc/default/locale
 cat /etc/default/locale | sed -n '/^\([a-zA-Z0-9_]*\)=\(.*\)$/p' | sed 's/^\([a-zA-Z0-9_]*\)=\(.*\)$/export \1="\2"/g' > /project_env.sh
 
-chown www-data.www-data /project_env.sh
+chown www.www /project_env.sh
 chmod +x /project_env.sh
 
 rm -rf /var/spool/cron/crontabs && mkdir -m 0644 -p /var/spool/cron/crontabs
