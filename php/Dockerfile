@@ -161,6 +161,6 @@ ADD src/ /data/www/
 
 WORKDIR /data/www
 
-EXPOSE 80
+EXPOSE 9000
 
 CMD ["/start.sh"]
