@@ -20,7 +20,7 @@ RUN echo @testing http://nl.alpinelinux.org/alpine/edge/testing >> /etc/apk/repo
     dialog \
     gcc \
     libxslt-dev \
-    freetype-dev \
+    freetype-dev
 
 # Copy our nginx config
 RUN rm -Rf /etc/nginx/nginx.conf
@@ -73,7 +73,7 @@ ADD scripts/start.sh /start.sh
 RUN chmod +x /start.sh
 
 # copy in code
-ADD src/ /data/www/
+# ADD src/ /data/www/
 
 WORKDIR /data/www
 
