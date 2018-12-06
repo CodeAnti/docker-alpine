@@ -1,0 +1,13 @@
+version: '3.3'
+
+services:
+   nginx:
+     image: codeanti/alpine-nginx:v1
+     volumes:
+       - /data/www:/data/www
+     restart: always
+   php:
+     image: codeanti/alpine-php:v1
+     volumes:
+       - /data/www:/data/www
+     restart: always
