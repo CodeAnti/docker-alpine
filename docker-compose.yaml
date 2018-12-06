@@ -3,11 +3,18 @@ version: '3.3'
 services:
    nginx:
      image: codeanti/alpine-nginx:v1
+     restart: always
+     ports:
+       - "443:443"
+       - "80:80"
+     links:
+       - php
      volumes:
        - /data/www:/data/www
-     restart: always
    php:
      image: codeanti/alpine-php:v1
+     restart: always
+     ports:
+       - "9000:9000"
      volumes:
        - /data/www:/data/www
-     restart: always
