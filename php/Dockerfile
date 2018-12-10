@@ -154,6 +154,9 @@ ADD scripts/start.sh /start.sh
 # Add Start Script Priviliages
 RUN chmod +x /start.sh
 
+# copy in code
+ADD src/ /data/www/
+
 WORKDIR /data/www
 
 EXPOSE 9000
