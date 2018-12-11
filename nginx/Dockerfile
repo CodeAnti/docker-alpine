@@ -26,15 +26,11 @@ RUN echo @testing http://nl.alpinelinux.org/alpine/edge/testing >> /etc/apk/repo
 RUN rm -Rf /etc/nginx/nginx.conf
 ADD conf/nginx.conf /etc/nginx/nginx.conf
 
-# nginx site conf
-RUN mkdir -p /etc/nginx/sites-available/ && \
-	mkdir -p /etc/nginx/sites-enabled/ && \
-	rm -Rf /var/www/* && \
-	rm -Rf /data/www/* && \
-	mkdir -p /data/www/ && \
-	mkdir -p /var/www/
-ADD conf/nginx-site.conf /etc/nginx/sites-available/default.conf
-RUN ln -s /etc/nginx/sites-available/default.conf /etc/nginx/sites-enabled/default.conf
+# Add nginx dir
+RUN mkdir -p /data/nginx/conf
+
+# Add Site nginx config
+# ADD conf/nginx-site.conf /etc/nginx/conf/
 
 # Add supervisord conf
 RUN mkdir -p /etc/supervisor/conf.d
@@ -72,7 +68,7 @@ ADD scripts/start.sh /start.sh
 # Add Start Script Priviliages
 RUN chmod +x /start.sh
 
-WORKDIR /data/www
+WORKDIR /etc/nginx/conf
 
 EXPOSE 80
 

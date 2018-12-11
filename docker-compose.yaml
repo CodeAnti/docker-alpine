@@ -10,7 +10,7 @@ services:
      links:
        - php
      volumes:
-       - /data/nginx/conf:/etc/nginx/sites-enabled
+       - /data/nginx/conf:/etc/nginx/conf
    php:
      image: codeanti/alpine-php:v1
      restart: always
