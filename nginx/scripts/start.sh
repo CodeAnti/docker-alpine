@@ -11,12 +11,6 @@ if [ ! -z "$SSH_KEY" ]; then
  chmod 600 /root/.ssh/id_rsa
 fi
 
-# Set custom webroot
-if [ ! -z "$WEBROOT" ]; then
- sed -i "s#root /data/www;#root ${WEBROOT};#g" /etc/nginx/sites-available/default.conf
-else
- webroot=/data/www
-fi
 
 # Pass real-ip to logs when behind ELB, etc
 if [[ "$REAL_IP_HEADER" == "1" ]] ; then
@@ -34,9 +28,6 @@ if [ ! -z "$PUID" ]; then
   deluser nginx
   addgroup -g ${PGID} nginx
   adduser -D -S -h /var/cache/nginx -s /sbin/nologin -G nginx -u ${PUID} nginx
-else
-  # Always chown webroot for better mounting
-  chown -Rf nginx.nginx /data/www
 fi
 
 mkdir -p /etc/default
