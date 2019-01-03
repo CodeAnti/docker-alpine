@@ -72,6 +72,6 @@ WORKDIR /etc/nginx/conf
 
 EXPOSE 80
 
-VOLUME ["/data/nginx/conf"]
+VOLUME ["/etc/nginx/conf"]
 
 CMD ["/start.sh"]

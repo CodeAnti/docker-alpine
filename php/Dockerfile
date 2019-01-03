@@ -161,4 +161,6 @@ WORKDIR /data/www
 
 EXPOSE 9000
 
+VOLUME ["/data/www"]
+
 CMD ["/start.sh"]
