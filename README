@@ -73,3 +73,21 @@ server {
     }
 }
 ```
+
+### laravel数据库链接
+···
+DB_CONNECTION=mysql
+# 容器
+# DB_HOST=mysql(此处为docker --link数据库的别名)
+# DB_PORT=3306
+# DB_DATABASE=test
+# DB_USERNAME=root
+# DB_PASSWORD=123456
+
+# 外部
+DB_HOST=172.16.201.243
+DB_PORT=3306
+DB_DATABASE=caigou
+DB_USERNAME=zhuniu
+DB_PASSWORD=zhuniu123@
+···
